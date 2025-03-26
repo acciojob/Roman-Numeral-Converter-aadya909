@@ -1,32 +1,41 @@
 function convertToRoman(num) {
   const obj = {
     0: ['M', 1000], 
-    1: ['D', 500], 
-    2: ['C', 100], 
-    3: ['L', 50], 
-    4: ['X', 10], 
-    5: ['V', 5], 
-    6: ['I', 1]
+    1: ['CM', 900], 
+    2: ['D', 500], 
+    3: ['CD', 400], 
+    4: ['C', 100], 
+    5: ['XC', 90], 
+    6: ['L', 50], 
+    7: ['XL', 40], 
+    8: ['X', 10], 
+    9: ['IX', 9], 
+    10: ['V', 5], 
+    11: ['IV', 4], 
+    12: ['I', 1]
   };
 
-  let result = "";
-
-  // Convert the object to an array for ordered traversal
-  const romanSymbols = Object.values(obj); 
+  let result = ""; 
+  const romanSymbols = Object.values(obj); // Convert obj to an array
 
   for (let [symbol, value] of romanSymbols) {
     while (num >= value) {
-      result += symbol; // Append the symbol to the result
-      num -= value; // Subtract the value from num
+      result += symbol; // Append symbol to result
+      num -= value; // Subtract value from num
     }
   }
 
   return result;
 }
 
-
-
+// Test cases
+console.log(convertToRoman(14)); // Output: XIV
+console.log(convertToRoman(798)); // Output: DCCXCVIII
+console.log(convertToRoman(999)); // Output: CMXCIX
+console.log(convertToRoman(44)); // Output: XLIV
+console.log(convertToRoman(36)); // Output: XXXVI
 
 // Do not edit below this line
 module.exports = convertToRoman;
+
 
